@@ -23,7 +23,7 @@ void SensorField::publish(std::string &line) const {
   case SensorFieldFormat::Float:
     {
 		char payload[esphome::VALUE_ACCURACY_MAX_LEN];
-        size_t len = value_accuracy_to_buf(payload, state, static_cast<int8_t>(this->accuracy_decimals));
+        size_t len = value_accuracy_to_buf(payload, state, static_cast<int8_t>(this->accuracy_decimals_));
 		line += payload;
     }  	    
     //line += value_accuracy_to_buf(state, this->accuracy_decimals_); till esphome 2026.3.0

@@ -127,9 +127,9 @@ public:
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
   
 #if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)
-  std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }
+  std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }  
 #else
-  std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }
+  std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }      
 #endif
   void publish(std::string &line) const override;
 
@@ -149,9 +149,9 @@ public:
 
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
 #if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)
-  std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }
+  std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }  
 #else
-  std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }
+  std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }      
 #endif
   void publish(std::string &line) const override;
 

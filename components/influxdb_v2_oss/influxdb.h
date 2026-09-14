@@ -1,6 +1,6 @@
 #pragma once
 
-#include "esphome/core/macros.h"
+#include "esphome.h"
 #include "esphome/core/component.h"
 #include "esphome/components/http_request/http_request.h"
 

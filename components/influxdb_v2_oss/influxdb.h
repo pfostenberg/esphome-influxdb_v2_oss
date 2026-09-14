@@ -83,9 +83,7 @@ public:
   virtual std::string sensor_object_id() const = 0;
   virtual void publish(std::string &line) const = 0;
 
-protected:    
-    char buffer_storage[OBJECT_ID_MAX_LEN];    
-    std::span<char, OBJECT_ID_MAX_LEN> buffer(buffer_storage);
+protected:        
   std::string field_name_;
 };
 
@@ -95,8 +93,12 @@ public:
   void set_sensor(const binary_sensor::BinarySensor *sensor) { this->sensor_ = sensor; }
 
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
-#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)
-  std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(buffer); }  
+#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)	
+  std::string sensor_object_id() const override { 
+  static char buffer_storage[OBJECT_ID_MAX_LEN]; 
+  std::span<char, OBJECT_ID_MAX_LEN> buffer(buffer_storage);
+  return this->sensor_->get_object_id_to(buffer); 
+  }  
 #else
   std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }      
 #endif
@@ -128,9 +130,14 @@ public:
 
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
   
-#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)
-  std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(buffer); }  
+#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)	
+  std::string sensor_object_id() const override { 
+  static char buffer_storage[OBJECT_ID_MAX_LEN]; 
+  std::span<char, OBJECT_ID_MAX_LEN> buffer(buffer_storage);
+  return this->sensor_->get_object_id_to(buffer); 
+  }  
 #else
+
   std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }      
 #endif
   void publish(std::string &line) const override;
@@ -150,9 +157,14 @@ public:
   void set_raw_state(bool val) { this->raw_state_ = val; }
 
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
-#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)
-  std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(buffer); }  
+#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)	
+  std::string sensor_object_id() const override { 
+  static char buffer_storage[OBJECT_ID_MAX_LEN]; 
+  std::span<char, OBJECT_ID_MAX_LEN> buffer(buffer_storage);
+  return this->sensor_->get_object_id_to(buffer); 
+  }  
 #else
+
   std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }      
 #endif
   void publish(std::string &line) const override;

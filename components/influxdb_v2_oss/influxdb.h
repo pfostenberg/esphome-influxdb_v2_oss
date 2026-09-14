@@ -65,8 +65,7 @@ protected:
   http_request::HttpRequestComponent *http_request_;
   std::string url_;
   std::string token_;
-  std::list<http_request::Header> headers_;
-  char buffer[OBJECT_ID_MAX_LEN];
+  std::list<http_request::Header> headers_;  
 #ifdef USE_TIME
   time::RealTimeClock *clock_{nullptr};
   std::list<BacklogEntry> backlog_;
@@ -85,6 +84,7 @@ public:
   virtual void publish(std::string &line) const = 0;
 
 protected:
+  char buffer[OBJECT_ID_MAX_LEN];
   std::string field_name_;
 };
 

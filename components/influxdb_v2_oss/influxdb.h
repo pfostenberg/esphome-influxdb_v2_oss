@@ -94,7 +94,13 @@ public:
   void set_sensor(const binary_sensor::BinarySensor *sensor) { this->sensor_ = sensor; }
 
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
-  std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }
+#if ESPHOME_VERSION_CODE >= ESPHOME_VERSION_NUMBER(2026, 3, 0)
+  // Code for ESPHome 2026.3.0 and later 
+  std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }  
+#else
+  std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }      
+#endif
+  
   void publish(std::string &line) const override;
 
 protected:
@@ -121,7 +127,13 @@ public:
   void set_raw_state(bool val) { this->raw_state_ = val; }
 
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
+  
+#if ESPHOME_VERSION_CODE >= ESPHOME_VERSION_NUMBER(2026, 3, 0)
+  // Code for ESPHome 2026.3.0 and later 
   std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }
+#else
+  std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }
+#endif
   void publish(std::string &line) const override;
 
 protected:
@@ -139,7 +151,12 @@ public:
   void set_raw_state(bool val) { this->raw_state_ = val; }
 
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
+#if ESPHOME_VERSION_CODE >= ESPHOME_VERSION_NUMBER(2026, 3, 0)
+  // Code for ESPHome 2026.3.0 and later 
   std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }
+#else
+  std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }
+#endif
   void publish(std::string &line) const override;
 
 protected:

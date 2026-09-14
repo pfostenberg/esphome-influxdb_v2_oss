@@ -83,8 +83,9 @@ public:
   virtual std::string sensor_object_id() const = 0;
   virtual void publish(std::string &line) const = 0;
 
-protected:
-  char buffer[OBJECT_ID_MAX_LEN];
+protected:    
+    char buffer_storage[OBJECT_ID_MAX_LEN];    
+    std::span<char, OBJECT_ID_MAX_LEN> buffer(buffer_storage);
   std::string field_name_;
 };
 

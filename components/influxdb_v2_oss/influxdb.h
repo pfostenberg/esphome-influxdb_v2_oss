@@ -93,7 +93,7 @@ public:
   void set_sensor(const binary_sensor::BinarySensor *sensor) { this->sensor_ = sensor; }
 
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
-#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 3, 0)
+#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)
   std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }  
 #else
   std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }      
@@ -126,7 +126,7 @@ public:
 
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
   
-#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 3, 0)
+#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)
   std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }
 #else
   std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }
@@ -148,7 +148,7 @@ public:
   void set_raw_state(bool val) { this->raw_state_ = val; }
 
   bool sensor_has_state() const override { return this->sensor_->has_state(); }
-#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 3, 0)
+#if ESPHOME_VERSION_CODE >= VERSION_CODE(2026, 7, 0)
   std::string sensor_object_id() const override { return this->sensor_->get_object_id_to(); }
 #else
   std::string sensor_object_id() const override { return this->sensor_->get_object_id(); }

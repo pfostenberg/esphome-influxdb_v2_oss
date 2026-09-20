@@ -21,12 +21,9 @@ void SensorField::publish(std::string &line) const {
 
   switch (this->format_) {
   case SensorFieldFormat::Float:
-    {
-		char payload[esphome::VALUE_ACCURACY_MAX_LEN];
-        size_t len = value_accuracy_to_buf(payload, state, static_cast<int8_t>(this->accuracy_decimals_));
-		line += payload;
-    }  	    
-    //line += value_accuracy_to_buf(state, this->accuracy_decimals_); till esphome 2026.3.0
+    char payload[esphome::VALUE_ACCURACY_MAX_LEN];
+    size_t len = value_accuracy_to_buf(payload, state, static_cast<int8_t>(this->accuracy_decimals_));
+    line += payload;
     break;
   case SensorFieldFormat::Integer:
     line += str_sprintf("%ldi", std::lroundf(state));

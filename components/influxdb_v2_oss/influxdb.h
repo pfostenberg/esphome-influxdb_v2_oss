@@ -65,7 +65,7 @@ protected:
   http_request::HttpRequestComponent *http_request_;
   std::string url_;
   std::string token_;
-  std::list<http_request::Header> headers_;
+  std::vector<http_request::Header> headers_;
 #ifdef USE_TIME
   time::RealTimeClock *clock_{nullptr};
   std::list<BacklogEntry> backlog_;
